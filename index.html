@@ -278,6 +278,7 @@ input[type=checkbox]{accent-color:var(--acc)}
         <label><span>Character pity</span><input id="icp" type="number" min="0" max="89" value="0"></label>
         <label><span>Weapon pity</span><input id="iwp" type="number" min="0" max="79" value="0"></label>
         <label><span>Fate point</span><select id="if"><option value="0">0</option><option value="1">1</option></select></label>
+        <label><span>Radiance counter</span><select id="icc"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></label>
       </div>
       <div class="checks">
         <label><input id="ig" type="checkbox"> Character guaranteed</label>
@@ -437,7 +438,7 @@ function setup(){
   if(!(Number.isInteger(w)&&w>=0&&Number.isInteger(cp)&&cp>=0&&cp<=89&&Number.isInteger(wp)&&wp>=0&&wp<=79)){
     $('e0').textContent='Wishes must be 0 or more, character pity 0–89, weapon pity 0–79.';return}
   $('e0').textContent='';
-  S={w,cp5:cp,cp4:0,cg:$('ig').checked,cg4:false,cr:1,wp5:wp,wp4:0,wg4:false,
+  S={w,cp5:cp,cp4:0,cg:$('ig').checked,cg4:false,cr:+$('icc').value,wp5:wp,wp4:0,wg4:false,
      fate:+$('if').value,course:+$('ic').value,cron:$('icr').checked,b:S?S.b:0};
   hist=[];T=freshT();render();
 }
